@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ryde-pier-head",
+    "name": "Ryde Pier Head",
+    "coordinate": { "lat": 50.7385, "lng": -1.1601 },
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ryde%20Pier%20Head"
+  },
+  {
+    "id": "appley-tower",
+    "name": "Appley Tower",
+    "coordinate": { "lat": 50.7289, "lng": -1.1444 },
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Appley%20Tower%20Ryde"
+  },
+  {
+    "id": "st-thomas-church",
+    "name": "St Thomas's Church",
+    "coordinate": { "lat": 50.7282, "lng": -1.162 },
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=St%20Thomas%27s%20Church%20Ryde"
+  },
+  {
+    "id": "ryde-colonnade",
+    "name": "The Ryde Colonnade",
+    "coordinate": { "lat": 50.7291, "lng": -1.1625 },
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Colonnade%20Ryde"
+  }
+]
