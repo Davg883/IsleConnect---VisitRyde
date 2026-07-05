@@ -187,7 +187,7 @@ export default function SMEHub() {
                     </p>
                   </div>
                   <a
-                    href="mailto:hello@isleconnect.uk?subject=Founder%20Trail%20Partner%20Inquiry"
+                    href="mailto:david@isleconnect.co.uk?subject=Founder%20Trail%20Partner%20Inquiry"
                     className="inline-block rounded-sm bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-ink-950 shadow-glow transition-transform hover:scale-[1.02]"
                   >
                     Apply for Pilot
