@@ -222,7 +222,7 @@ export default function PhoneMockup() {
                         <Ticket size={14} /> Reward unlocked
                       </p>
                       <p className="mt-1 font-mono text-lg font-semibold tracking-widest text-gold">
-                        CIBO_SUMMER_10
+                        CIBO1862RYDE
                       </p>
                     </motion.div>
                   )}

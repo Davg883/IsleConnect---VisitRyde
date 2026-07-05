@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://visitryde.uk"),
   title: "IsleConnect — Coastal Creative Gateway | Ryde, Isle of Wight",
   description:
     "IsleConnect presents Ryde as the Coastal Creative Gateway: the 1862 Mystery Trail, local independent partners, and the Pride in Place programme for the Ryde Neighbourhood Board.",
