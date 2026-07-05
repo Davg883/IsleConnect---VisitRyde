@@ -75,6 +75,22 @@ export const TrackingEventSchema = z.object({
 });
 export type TrackingEvent = z.infer<typeof TrackingEventSchema>;
 
+/**
+ * Envelope for cross-origin postMessage events tunnelled from the embedded
+ * trail app (cody-tours.vercel.app) to the parent page. Both the origin AND
+ * this structure are validated before anything reaches /api/events.
+ */
+export const BridgeMessageSchema = z.object({
+  type: z.literal("ISLECONNECT_IFRAME_EVENT"),
+  payload: z.object({
+    event: z.enum(["map_opened", "stop_selected", "reward_clicked"]),
+    metadata: z
+      .record(z.string(), z.union([z.string(), z.number(), z.boolean()]))
+      .optional(),
+  }),
+});
+export type BridgeMessage = z.infer<typeof BridgeMessageSchema>;
+
 /** Shape returned to the SME Hub cards by GET /api/merchants. */
 export interface MerchantCardDTO {
   id: string;
