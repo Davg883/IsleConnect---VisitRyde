@@ -93,88 +93,143 @@ export default function SMEHub() {
           )}
 
           {state.status === "ready" && (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {state.merchants.map((merchant) => {
-                const open = openId === merchant.id;
-                return (
-                  <article
-                    key={merchant.id}
-                    className="flex flex-col rounded-lg border border-gold/25 bg-ink-900/60 p-7 transition-colors hover:border-gold/50"
-                  >
-                    <p className="text-[0.65rem] uppercase tracking-[0.35em] text-tide">
-                      {merchant.primaryCategory}
-                    </p>
-                    <h3 className="mt-2 font-display text-2xl text-cream">
-                      {merchant.name}
-                    </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-mutedwarm">
-                      {merchant.tagline}
-                    </p>
-
-                    <p className="mt-5 flex items-center gap-2 text-xs text-cream/60">
-                      <MapPin size={13} className="shrink-0 text-gold-soft" />
-                      {merchant.nearestLandmark.distanceLabel} from{" "}
-                      {merchant.nearestLandmark.name}
-                    </p>
-
-                    <ul className="mt-4 flex flex-wrap gap-2">
-                      {merchant.services.slice(0, 3).map((service) => (
-                        <li
-                          key={service}
-                          className="rounded-full border border-cream/15 px-3 py-1 text-[0.65rem] uppercase tracking-wider text-cream/70"
-                        >
-                          {service}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <button
-                      type="button"
-                      onClick={() => toggleReward(merchant.id)}
-                      aria-expanded={open}
-                      className="mt-6 flex items-center justify-between rounded-sm border border-gold px-4 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+            <>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {state.merchants.map((merchant) => {
+                  const open = openId === merchant.id;
+                  return (
+                    <article
+                      key={merchant.id}
+                      className="flex flex-col rounded-lg border border-gold/25 bg-ink-900/60 p-7 transition-colors hover:border-gold/50"
                     >
-                      Reveal reward details
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform duration-300 ${
-                          open ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+                      <p className="text-[0.65rem] uppercase tracking-[0.35em] text-tide">
+                        {merchant.primaryCategory}
+                      </p>
+                      <h3 className="mt-2 font-display text-2xl text-cream">
+                        {merchant.name}
+                      </h3>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-mutedwarm">
+                        {merchant.tagline}
+                      </p>
 
-                    <AnimatePresence initial={false}>
-                      {open && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 260,
-                            damping: 30,
-                          }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-4 rounded-lg border border-dashed border-gold/50 bg-gold/10 p-4 text-center">
-                            <p className="flex items-center justify-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold-soft">
-                              <Ticket size={14} /> Trail coupon
-                            </p>
-                            <p className="mt-2 font-mono text-lg font-semibold tracking-[0.2em] text-gold">
-                              {merchant.couponCode}
-                            </p>
-                            <p className="mt-2 text-[0.65rem] text-mutedwarm">
-                              Show at the counter after decoding the partner
-                              stop. One redemption per player, per trail run.
-                            </p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </article>
-                );
-              })}
-            </div>
+                      <p className="mt-5 flex items-center gap-2 text-xs text-cream/60">
+                        <MapPin size={13} className="shrink-0 text-gold-soft" />
+                        {merchant.nearestLandmark.distanceLabel} from{" "}
+                        {merchant.nearestLandmark.name}
+                      </p>
+
+                      <ul className="mt-4 flex flex-wrap gap-2">
+                        {merchant.services.slice(0, 3).map((service) => (
+                          <li
+                            key={service}
+                            className="rounded-full border border-cream/15 px-3 py-1 text-[0.65rem] uppercase tracking-wider text-cream/70"
+                          >
+                            {service}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <button
+                        type="button"
+                        onClick={() => toggleReward(merchant.id)}
+                        aria-expanded={open}
+                        className="mt-6 flex items-center justify-between rounded-sm border border-gold px-4 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+                      >
+                        Reveal reward details
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-300 ${
+                            open ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {open && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 260,
+                              damping: 30,
+                            }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mt-4 rounded-lg border border-dashed border-gold/50 bg-gold/10 p-4 text-center">
+                              <p className="flex items-center justify-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold-soft">
+                                <Ticket size={14} /> Trail coupon
+                              </p>
+                              <p className="mt-2 font-mono text-lg font-semibold tracking-[0.2em] text-gold">
+                                {merchant.couponCode}
+                              </p>
+                              <p className="mt-2 text-[0.65rem] text-mutedwarm">
+                                Show at the counter after decoding the partner
+                                stop. One redemption per player, per trail run.
+                              </p>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </article>
+                  );
+                })}
+              </div>
+
+              {/* Founder Partner Banner */}
+              <div id="founder-partner" className="mt-16 rounded-lg border border-gold/30 bg-gradient-to-b from-gold/5 to-transparent p-8 md:p-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-cream/10">
+                  <div>
+                    <h3 className="font-display text-3xl text-cream">Founder Trail Partner</h3>
+                    <p className="mt-2 text-xs uppercase tracking-[0.25em] text-gold font-medium">
+                      90-Day Pilot Sprint — £295/month
+                    </p>
+                  </div>
+                  <a
+                    href="mailto:hello@isleconnect.uk?subject=Founder%20Trail%20Partner%20Inquiry"
+                    className="inline-block rounded-sm bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-ink-950 shadow-glow transition-transform hover:scale-[1.02]"
+                  >
+                    Apply for Pilot
+                  </a>
+                </div>
+
+                <div className="grid gap-8 md:grid-cols-3 py-8 border-b border-cream/10">
+                  <div>
+                    <h4 className="font-display text-lg text-gold">Month 1: Build</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-mutedwarm">
+                      We create your trail placement, QR display, landing-page call-to-action and launch asset.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg text-gold">Month 2: Promote</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-mutedwarm">
+                      Your venue appears inside the visitor journey with a local reward and route visibility.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg text-gold">Month 3: Prove</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-mutedwarm">
+                      We review scan engagement, visitor actions and next-step recommendations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-8">
+                  <div className="max-w-2xl">
+                    <p className="text-xs text-mutedwarm font-semibold uppercase tracking-wider">
+                      30-day review point:
+                    </p>
+                    <p className="mt-1 text-xs text-mutedwarm">
+                      Month 1 covers setup and launch. If the first month does not feel useful, there is no obligation to continue.
+                    </p>
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold text-right shrink-0">
+                    Sponsor a stop. Reward a visitor. Track the engagement.
+                  </p>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>

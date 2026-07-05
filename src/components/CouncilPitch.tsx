@@ -16,7 +16,7 @@ const PILLARS = [
     icon: Landmark,
     number: "Pillar 2",
     title: "Preserving Civic Heritage",
-    metric: "AI as an economic multiplier",
+    metric: "Heritage storytelling as an economic multiplier",
     body: "Each stop attaches a revenue mechanism to a heritage asset — the Colonnade, St Thomas's, Appley Tower — building the commercial case for restoration. The story layer is generated and maintained at a fraction of traditional interpretation-board cost.",
   },
   {

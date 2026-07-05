@@ -17,7 +17,7 @@ const STEPS = [
     body: "Scanning unlocks a confidential telegram from that exact spot in 1862 — smugglers, exiles, and the Foreign Office's business on the Island — narrated on location.",
   },
   {
-    step: "Yield",
+    step: "Reward",
     icon: Gift,
     title: "Claim the local reward",
     body: "Every decoded stop yields a live coupon at the nearest independent partner. Story becomes footfall; footfall becomes revenue that stays on the High Street.",

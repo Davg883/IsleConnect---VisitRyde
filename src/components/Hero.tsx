@@ -61,6 +61,12 @@ export default function Hero() {
               Experience the 1862 Mystery Trail
             </button>
             <a
+              href="#founder-partner"
+              className="rounded-sm border border-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+            >
+              Become a Trail Partner
+            </a>
+            <a
               href="#history-hub"
               className="text-sm uppercase tracking-[0.2em] text-cream/70 underline decoration-gold/50 underline-offset-8 transition-colors hover:text-gold"
             >
@@ -71,7 +77,7 @@ export default function Hero() {
           <dl className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-cream/10 pt-6">
             {[
               { value: "12", label: "Trail stops" },
-              { value: "1862", label: "The year it begins" },
+              { value: "1862", label: "Victoria's secret dispatches" },
               { value: "100%", label: "Independent partners" },
             ].map((stat) => (
               <div key={stat.label}>
