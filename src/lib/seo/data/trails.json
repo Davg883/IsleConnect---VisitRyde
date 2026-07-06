@@ -34,7 +34,7 @@
     "sampleStops": ["ryde-pier-head", "appley-tower", "puckpool-battery"],
     "media": {
       "type": "image",
-      "src": "/media/dell cafe ww2.png",
+      "src": "/media/dell-cafe-ww2.png",
       "alt": "Dell Cafe wartime defence observations"
     },
     "playable": false
