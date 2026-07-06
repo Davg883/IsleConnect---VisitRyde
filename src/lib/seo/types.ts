@@ -101,7 +101,7 @@ export const TrailStatusSchema = z.enum([
 export type TrailStatus = z.infer<typeof TrailStatusSchema>;
 
 export const TrailMediaSchema = z.object({
-  type: z.enum(["image", "concept"]),
+  type: z.enum(["image", "video", "concept"]),
   src: z.string().min(1).nullable(),
   alt: z.string().min(1),
 });

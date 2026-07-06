@@ -67,7 +67,18 @@ function TrailCard({ trail, index }: { trail: Trail; index: number }) {
     >
       {/* Media panel */}
       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-gold/20">
-        {trail.media.type === "image" && trail.media.src ? (
+        {trail.media.type === "video" && trail.media.src ? (
+          <video
+            className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+            src={trail.media.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={trail.media.alt}
+          />
+        ) : trail.media.type === "image" && trail.media.src ? (
           <Image
             src={trail.media.src}
             alt={trail.media.alt}

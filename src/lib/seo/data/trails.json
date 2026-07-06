@@ -13,9 +13,9 @@
     "playableNote": "Played today as the 1862 Mystery Trail — the live chapter demonstrated on this page.",
     "sampleStops": ["ryde-pier-head", "ryde-colonnade", "st-thomas-church"],
     "media": {
-      "type": "image",
-      "src": "/media/intro-poster.jpg",
-      "alt": "Still from the 1862 Mystery Trail introduction film"
+      "type": "video",
+      "src": "/media/manor_timeslip_render.mp4",
+      "alt": "Queen Victoria Manor timeslip render loop"
     },
     "playable": true
   },
@@ -34,8 +34,8 @@
     "sampleStops": ["ryde-pier-head", "appley-tower", "puckpool-battery"],
     "media": {
       "type": "image",
-      "src": "/media/trail-signage.png",
-      "alt": "Produced IsleConnect trail signage for the Ryde-to-Seaview Wartime Trail, Puckpool Battery stop"
+      "src": "/media/dell cafe ww2.png",
+      "alt": "Dell Cafe wartime defence observations"
     },
     "playable": false
   },
@@ -53,9 +53,9 @@
     "playableNote": "A venue-led expansion concept, anchored by partners such as The Smugglers' Cellar.",
     "sampleStops": ["ryde-colonnade", "st-thomas-church"],
     "media": {
-      "type": "concept",
-      "src": null,
-      "alt": "Concept treatment for the Smugglers' Past trail"
+      "type": "video",
+      "src": "/media/mp_.mp4",
+      "alt": "Ryde Smugglers' Past vaulted cellar loop"
     },
     "playable": false
   }
