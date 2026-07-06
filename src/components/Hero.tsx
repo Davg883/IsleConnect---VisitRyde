@@ -38,18 +38,17 @@ export default function Hero() {
           </p>
 
           <h1 className="mt-6 font-display text-5xl leading-[1.08] text-cream sm:text-6xl lg:text-[4.2rem]">
-            Same Manor heart.
+            Unlock Ryde&apos;s
             <br />
-            <span className="italic text-gold">A whole new</span>
+            <span className="italic text-gold">hidden story</span>
             <br />
-            Appley chapter.
+            trails.
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-mutedwarm">
-            IsleConnect turns Ryde&apos;s Victorian seafront into a playable
-            story. Scan brass-framed plaques between the Pier Head and Appley
-            Tower, decode dispatches from 1862, and unlock real rewards at the
-            town&apos;s independent kitchens, bars and cellars.
+            Scan real places, follow cinematic local stories, claim rewards
+            from independent venues and help turn Ryde&apos;s heritage into
+            measurable footfall.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
@@ -61,7 +60,7 @@ export default function Hero() {
               Experience the 1862 Mystery Trail
             </button>
             <a
-              href="#founder-partner"
+              href="#story-trails"
               className="rounded-sm border border-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
             >
               Become a Trail Partner
@@ -74,9 +73,15 @@ export default function Hero() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-cream/10 pt-6">
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-cream/60">
+            Begin with the 1862 Mystery Trail — the playable Queen Victoria
+            chapter — then explore smugglers&apos; cellars and wartime coastal
+            defences as the platform grows.
+          </p>
+
+          <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-cream/10 pt-6">
             {[
-              { value: "12", label: "Trail stops" },
+              { value: "3", label: "Story trails" },
               { value: "1862", label: "Victoria's secret dispatches" },
               { value: "100%", label: "Independent partners" },
             ].map((stat) => (

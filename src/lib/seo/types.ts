@@ -49,6 +49,8 @@ export const MerchantSchema = z
     coordinate: CoordinateSchema,
     categories: z.array(GBPCategorySchema).min(1),
     nearbyLandmarks: z.array(NearbyLandmarkRefSchema),
+    /** Story trails this venue fits; validated against the trail dataset. */
+    trailIds: z.array(z.string().min(1)).optional().default([]),
   })
   .superRefine((merchant, ctx) => {
     const primaryCount = merchant.categories.filter((c) => c.primary).length;
@@ -67,13 +69,63 @@ export const MerchantDatasetSchema = z.array(MerchantSchema).min(1);
 
 /** Lightweight analytics event contract for /api/events. */
 export const TrackingEventSchema = z.object({
-  type: z.enum(["map_opened", "stop_selected", "reward_clicked"]),
+  type: z.enum([
+    "map_opened",
+    "stop_selected",
+    "reward_clicked",
+    "trail_selected",
+    "sponsor_enquiry",
+  ]),
   merchantId: z.string().min(1).optional(),
   stopId: z.string().min(1).optional(),
+  trailId: z.string().min(1).optional(),
   timestamp: z.string().datetime().optional(),
   meta: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])).optional(),
 });
 export type TrackingEvent = z.infer<typeof TrackingEventSchema>;
+
+
+/* ========================================================================== */
+/* Story trails                                                               */
+/* ========================================================================== */
+
+/**
+ * Honest status labelling is a hard requirement: trails are chapters at
+ * different stages, never presented as uniformly finished products.
+ */
+export const TrailStatusSchema = z.enum([
+  "live-prototype",
+  "in-development",
+  "concept",
+]);
+export type TrailStatus = z.infer<typeof TrailStatusSchema>;
+
+export const TrailMediaSchema = z.object({
+  type: z.enum(["image", "concept"]),
+  src: z.string().min(1).nullable(),
+  alt: z.string().min(1),
+});
+
+export const TrailSchema = z.object({
+  id: z.string().min(1).regex(/^[a-z0-9-]+$/),
+  anchor: z.string().min(1).regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  subtitle: z.string().min(1),
+  status: TrailStatusSchema,
+  statusLabel: z.string().min(1),
+  description: z.string().min(1),
+  bestFor: z.string().min(1),
+  partnerFit: z.string().min(1),
+  routePurpose: z.string().min(1),
+  playableNote: z.string().min(1),
+  /** Landmark ids forming the indicative route; validated referentially. */
+  sampleStops: z.array(z.string().min(1)).min(1),
+  media: TrailMediaSchema,
+  playable: z.boolean(),
+});
+export type Trail = z.infer<typeof TrailSchema>;
+
+export const TrailDatasetSchema = z.array(TrailSchema).min(1);
 
 /**
  * Envelope for cross-origin postMessage events tunnelled from the embedded
@@ -83,7 +135,13 @@ export type TrackingEvent = z.infer<typeof TrackingEventSchema>;
 export const BridgeMessageSchema = z.object({
   type: z.literal("ISLECONNECT_IFRAME_EVENT"),
   payload: z.object({
-    event: z.enum(["map_opened", "stop_selected", "reward_clicked"]),
+    event: z.enum([
+      "map_opened",
+      "stop_selected",
+      "reward_clicked",
+      "trail_selected",
+      "sponsor_enquiry",
+    ]),
     metadata: z
       .record(z.string(), z.union([z.string(), z.number(), z.boolean()]))
       .optional(),

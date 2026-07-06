@@ -4,22 +4,36 @@
     "name": "Fumo33",
     "address": "33 Union Street, Ryde, Isle of Wight, PO33 2LE",
     "url": "https://visitryde.uk/eat-drink/fumo33",
-    "coordinate": { "lat": 50.7305, "lng": -1.1618 },
+    "coordinate": {
+      "lat": 50.7305,
+      "lng": -1.1618
+    },
     "categories": [
       {
         "id": "restaurant",
         "primary": true,
         "name": "Restaurant",
         "services": [
-          { "id": "wood-fired-pizza", "name": "Wood-fired Pizza" },
-          { "id": "smoked-platters", "name": "Smoked Platters" }
+          {
+            "id": "wood-fired-pizza",
+            "name": "Wood-fired Pizza"
+          },
+          {
+            "id": "smoked-platters",
+            "name": "Smoked Platters"
+          }
         ]
       },
       {
         "id": "bar",
         "primary": false,
         "name": "Bar",
-        "services": [{ "id": "cocktail-bar", "name": "Cocktail Bar" }]
+        "services": [
+          {
+            "id": "cocktail-bar",
+            "name": "Cocktail Bar"
+          }
+        ]
       }
     ],
     "nearbyLandmarks": [
@@ -27,7 +41,12 @@
         "landmarkId": "st-thomas-church",
         "customDescription": "A short stroll up Union Street from the historic parish church."
       },
-      { "landmarkId": "ryde-colonnade" }
+      {
+        "landmarkId": "ryde-colonnade"
+      }
+    ],
+    "trailIds": [
+      "victoria"
     ]
   },
   {
@@ -35,16 +54,28 @@
     "name": "Cibo",
     "address": "Union Street, Ryde, Isle of Wight, PO33 2DU",
     "url": "https://visitryde.uk/eat-drink/cibo",
-    "coordinate": { "lat": 50.7312, "lng": -1.1614 },
+    "coordinate": {
+      "lat": 50.7312,
+      "lng": -1.1614
+    },
     "categories": [
       {
         "id": "mediterranean-restaurant",
         "primary": true,
         "name": "Mediterranean Restaurant",
         "services": [
-          { "id": "artisan-breakfast", "name": "Artisan Breakfast" },
-          { "id": "baked-gnocchi", "name": "Baked Gnocchi" },
-          { "id": "local-seafood-pasta", "name": "Local Seafood Pasta" }
+          {
+            "id": "artisan-breakfast",
+            "name": "Artisan Breakfast"
+          },
+          {
+            "id": "baked-gnocchi",
+            "name": "Baked Gnocchi"
+          },
+          {
+            "id": "local-seafood-pasta",
+            "name": "Local Seafood Pasta"
+          }
         ]
       },
       {
@@ -55,8 +86,15 @@
       }
     ],
     "nearbyLandmarks": [
-      { "landmarkId": "ryde-colonnade" },
-      { "landmarkId": "ryde-pier-head" }
+      {
+        "landmarkId": "ryde-colonnade"
+      },
+      {
+        "landmarkId": "ryde-pier-head"
+      }
+    ],
+    "trailIds": [
+      "victoria"
     ]
   },
   {
@@ -64,16 +102,28 @@
     "name": "The Smugglers' Cellar",
     "address": "High Street, Ryde, Isle of Wight, PO33 2RE",
     "url": "https://visitryde.uk/eat-drink/the-smugglers-cellar",
-    "coordinate": { "lat": 50.7286, "lng": -1.1609 },
+    "coordinate": {
+      "lat": 50.7286,
+      "lng": -1.1609
+    },
     "categories": [
       {
         "id": "cellar-bar",
         "primary": true,
         "name": "Cellar Bar",
         "services": [
-          { "id": "island-craft-ales", "name": "Island Craft Ales" },
-          { "id": "local-cider", "name": "Local Cider" },
-          { "id": "historical-exhibits", "name": "Historical Exhibits" }
+          {
+            "id": "island-craft-ales",
+            "name": "Island Craft Ales"
+          },
+          {
+            "id": "local-cider",
+            "name": "Local Cider"
+          },
+          {
+            "id": "historical-exhibits",
+            "name": "Historical Exhibits"
+          }
         ]
       },
       {
@@ -88,6 +138,10 @@
         "landmarkId": "st-thomas-church",
         "customDescription": "Tucked beneath the old town, moments from St Thomas's Church."
       }
+    ],
+    "trailIds": [
+      "smugglers",
+      "victoria"
     ]
   },
   {
@@ -95,17 +149,32 @@
     "name": "Appley Beach Cafe",
     "address": "Appley Beach, Esplanade, Ryde, Isle of Wight, PO33 1ND",
     "url": "https://visitryde.uk/eat-drink/appley-beach-cafe",
-    "coordinate": { "lat": 50.7295, "lng": -1.1462 },
+    "coordinate": {
+      "lat": 50.7295,
+      "lng": -1.1462
+    },
     "categories": [
       {
         "id": "beach-cafe",
         "primary": true,
         "name": "Beach Cafe",
         "services": [
-          { "id": "full-english", "name": "Full English" },
-          { "id": "bens-burger-bar", "name": "Bens Burger Bar" },
-          { "id": "loaded-fries", "name": "Loaded Fries" },
-          { "id": "creams", "name": "Creams" }
+          {
+            "id": "full-english",
+            "name": "Full English"
+          },
+          {
+            "id": "bens-burger-bar",
+            "name": "Bens Burger Bar"
+          },
+          {
+            "id": "loaded-fries",
+            "name": "Loaded Fries"
+          },
+          {
+            "id": "creams",
+            "name": "Creams"
+          }
         ]
       },
       {
@@ -120,6 +189,9 @@
         "landmarkId": "appley-tower",
         "customDescription": "On the sand directly beside the Victorian folly, Appley Tower."
       }
+    ],
+    "trailIds": [
+      "wartime"
     ]
   }
 ]

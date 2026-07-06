@@ -8,6 +8,7 @@ import { launchTrailDemo } from "@/lib/client";
 
 const NAV_LINKS = [
   { label: "The Trail", href: "#how-it-works" },
+  { label: "Story Trails", href: "#story-trails" },
   { label: "History Hub", href: "#history-hub" },
   { label: "Local Partners", href: "#local-partners" },
   { label: "Pride in Place", href: "#pride-in-place" },

@@ -7,6 +7,7 @@
 
 import landmarksRaw from "./data/landmarks.json";
 import merchantsRaw from "./data/merchants.json";
+import trailsRaw from "./data/trails.json";
 import {
   Coordinate,
   Landmark,
@@ -14,6 +15,8 @@ import {
   Merchant,
   MerchantCardDTO,
   MerchantDatasetSchema,
+  Trail,
+  TrailDatasetSchema,
 } from "./types";
 
 /* ---------------------------------------------------------------- errors */
@@ -36,6 +39,7 @@ export class EntityNotFoundError extends Error {
 
 let landmarkCache: Landmark[] | null = null;
 let merchantCache: Merchant[] | null = null;
+let trailCache: Trail[] | null = null;
 
 export function getLandmarks(): Landmark[] {
   if (landmarkCache) return landmarkCache;
@@ -69,6 +73,41 @@ export function getMerchants(): Merchant[] {
   }
   merchantCache = parsed.data;
   return merchantCache;
+}
+
+
+export function getTrails(): Trail[] {
+  if (trailCache) return trailCache;
+  const parsed = TrailDatasetSchema.safeParse(trailsRaw);
+  if (!parsed.success) {
+    throw new DatasetError(
+      `trails.json failed schema validation:\n${parsed.error.message}`
+    );
+  }
+  // Referential integrity: every sample stop must be a verified landmark,
+  // and every merchant trail tag must reference a real trail.
+  const landmarkIds = new Set(getLandmarks().map((l) => l.id));
+  for (const trail of parsed.data) {
+    for (const stopId of trail.sampleStops) {
+      if (!landmarkIds.has(stopId)) {
+        throw new DatasetError(
+          `Trail "${trail.id}" references unknown landmark "${stopId}".`
+        );
+      }
+    }
+  }
+  const trailIds = new Set(parsed.data.map((t) => t.id));
+  for (const merchant of getMerchants()) {
+    for (const trailId of merchant.trailIds) {
+      if (!trailIds.has(trailId)) {
+        throw new DatasetError(
+          `Merchant "${merchant.id}" references unknown trail "${trailId}".`
+        );
+      }
+    }
+  }
+  trailCache = parsed.data;
+  return trailCache;
 }
 
 export function getMerchantById(merchantId: string): Merchant {
@@ -217,6 +256,54 @@ export function generateGeoSchema(merchantId: string): Record<string, unknown> {
       })
     ),
     slogan: proximityStatement,
+  };
+}
+
+
+/**
+ * Generates a Schema.org/TouristTrip JSON-LD object for a story trail,
+ * with its itinerary built from the verified landmark dataset. The trail's
+ * development status is stated plainly in the description — structured
+ * data must never overclaim what copy is careful about.
+ */
+export function generateTrailSchema(trailId: string): Record<string, unknown> {
+  const trail = getTrails().find((t) => t.id === trailId);
+  if (!trail) throw new EntityNotFoundError("landmark", trailId);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "@id": `https://visitryde.uk/trails/${trail.id}`,
+    name: trail.title,
+    alternateName: trail.subtitle,
+    description: `${trail.description} Status: ${trail.statusLabel}.`,
+    touristType: trail.bestFor,
+    itinerary: {
+      "@type": "ItemList",
+      numberOfItems: trail.sampleStops.length,
+      itemListElement: trail.sampleStops.map((stopId, index) => {
+        const landmark = getLandmarks().find((l) => l.id === stopId)!;
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "TouristAttraction",
+            name: landmark.name,
+            url: landmark.googleMapsUrl,
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: landmark.coordinate.lat,
+              longitude: landmark.coordinate.lng,
+            },
+          },
+        };
+      }),
+    },
+    provider: {
+      "@type": "Organization",
+      name: "IsleConnect",
+      areaServed: "Ryde, Isle of Wight, GB",
+    },
   };
 }
 

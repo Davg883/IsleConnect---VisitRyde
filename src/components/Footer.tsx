@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
+import { SPONSOR_EMAIL } from "@/lib/config";
 
 export default function Footer() {
   return (
@@ -33,10 +34,10 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <Mail size={15} className="text-gold-soft" />
               <a
-                href="mailto:david@isleconnect.co.uk"
+                href={`mailto:${SPONSOR_EMAIL}`}
                 className="transition-colors hover:text-gold"
               >
-                david@isleconnect.co.uk
+                {SPONSOR_EMAIL}
               </a>
             </li>
             <li className="flex items-start gap-2">

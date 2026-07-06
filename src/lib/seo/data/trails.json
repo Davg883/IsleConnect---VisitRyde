@@ -1,0 +1,62 @@
+[
+  {
+    "id": "victoria",
+    "anchor": "victoria-trail",
+    "title": "Queen Victoria & Imperial Ryde",
+    "subtitle": "The town that became a gateway to Osborne",
+    "status": "live-prototype",
+    "statusLabel": "Live prototype",
+    "description": "Explore the Ryde that grew around Queen Victoria's Island presence: piers, hotels, dispatches, civic spaces and the route from ferry arrival to town-centre influence. This trail is designed to move visitors from the Esplanade into Union Street, Dover Street, St Thomas Square and the High Street.",
+    "bestFor": "Cultural visitors, heritage tourists, hotel guests, schools and civic partners.",
+    "partnerFit": "Hotels, cafés, independent shops, heritage buildings and town-centre venues.",
+    "routePurpose": "Moves arriving ferry and hovercraft passengers off the Esplanade and into the town centre.",
+    "playableNote": "Played today as the 1862 Mystery Trail — the live chapter demonstrated on this page.",
+    "sampleStops": ["ryde-pier-head", "ryde-colonnade", "st-thomas-church"],
+    "media": {
+      "type": "image",
+      "src": "/media/intro-poster.jpg",
+      "alt": "Still from the 1862 Mystery Trail introduction film"
+    },
+    "playable": true
+  },
+  {
+    "id": "wartime",
+    "anchor": "wartime-trail",
+    "title": "Wartime Solent Defence",
+    "subtitle": "How Ryde's coast helped protect Portsmouth Harbour",
+    "status": "in-development",
+    "statusLabel": "Pilot route in development",
+    "description": "Walk or cycle the coastal corridor from Ryde towards Seaview and reveal how piers, beaches, batteries, observation points and naval sites formed part of the defensive network protecting Spithead and Portsmouth Harbour during the Second World War.",
+    "bestFor": "Walkers, cyclists, military-history visitors, families, schools and coastal tourists.",
+    "partnerFit": "Seafront cafés, pubs, hotels, attractions, walking groups and cycling partners.",
+    "routePurpose": "Extends visitor dwell time along the Ryde-to-Seaview coastal corridor.",
+    "playableNote": "Route research and physical signage collateral are already produced for this chapter.",
+    "sampleStops": ["ryde-pier-head", "appley-tower", "puckpool-battery"],
+    "media": {
+      "type": "image",
+      "src": "/media/trail-signage.png",
+      "alt": "Produced IsleConnect trail signage for the Ryde-to-Seaview Wartime Trail, Puckpool Battery stop"
+    },
+    "playable": false
+  },
+  {
+    "id": "smugglers",
+    "anchor": "smugglers-trail",
+    "title": "Ryde Smugglers' Past",
+    "subtitle": "Cellars, contraband and hidden Ryde",
+    "status": "concept",
+    "statusLabel": "Venue partner concept",
+    "description": "Follow the clues beneath the polite Georgian and Victorian townscape to discover Ryde's older world of smugglers, vaulted cellars, local ale houses and hidden routes. This trail is designed to turn hidden history into evening economy, pub visits, cellar bars, cafés and curiosity-led footfall.",
+    "bestFor": "Hidden-history fans, families, evening visitors, pub-goers and local explorers.",
+    "partnerFit": "Cellar bars, pubs, cafés, antique shops, curio sellers and local ale venues.",
+    "routePurpose": "Builds night-time economy footfall through the town centre's hidden spaces.",
+    "playableNote": "A venue-led expansion concept, anchored by partners such as The Smugglers' Cellar.",
+    "sampleStops": ["ryde-colonnade", "st-thomas-church"],
+    "media": {
+      "type": "concept",
+      "src": null,
+      "alt": "Concept treatment for the Smugglers' Past trail"
+    },
+    "playable": false
+  }
+]
