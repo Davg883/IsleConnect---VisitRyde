@@ -7,11 +7,12 @@
  * and forwards the event to its Zod-checked /api/events endpoint.
  *
  * Allowed event names (anything else is rejected by the parent):
- *   "map_opened" | "stop_selected" | "reward_clicked"
+ *   "map_opened" | "stop_selected" | "reward_clicked" |
+ *   "trail_selected" | "sponsor_enquiry"
  *
  * Metadata values must be strings, numbers, or booleans. Two keys get
  * special treatment on the parent side and are lifted into first-class
- * fields: `merchantId` and `stopId`.
+ * fields: `merchantId`, `stopId` and `trailId`.
  * ---------------------------------------------------------------------------
  */
 
@@ -30,7 +31,7 @@ const ISLECONNECT_PARENT_ORIGINS = [
  * Safely dispatch a trail event to the IsleConnect parent page.
  * No-ops when the app is opened directly (not inside an iframe).
  *
- * @param {"map_opened"|"stop_selected"|"reward_clicked"} eventName
+ * @param {"map_opened"|"stop_selected"|"reward_clicked"|"trail_selected"|"sponsor_enquiry"} eventName
  * @param {Record<string, string|number|boolean>} [eventMetadata]
  */
 function dispatchIsleConnectEvent(eventName, eventMetadata = {}) {

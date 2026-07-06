@@ -53,6 +53,8 @@ export default function PhoneMockup() {
             : undefined,
         stopId:
           typeof metadata?.stopId === "string" ? metadata.stopId : undefined,
+        trailId:
+          typeof metadata?.trailId === "string" ? metadata.trailId : undefined,
         meta: metadata,
       });
     };

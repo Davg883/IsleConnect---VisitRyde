@@ -1,9 +1,13 @@
 /**
  * Server component: injects the engine-generated Schema.org/LocalBusiness
- * JSON-LD for every partner into the document, mirroring what
- * GET /api/schema/:merchantId serves to external consumers.
+ * and TouristTrip JSON-LD into the document.
  */
-import { generateGeoSchema, getMerchants } from "@/lib/seo/engine";
+import {
+  generateGeoSchema,
+  generateTrailSchema,
+  getMerchants,
+  getTrails,
+} from "@/lib/seo/engine";
 
 export default function SchemaScripts() {
   const merchants = getMerchants();
@@ -15,6 +19,15 @@ export default function SchemaScripts() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateGeoSchema(merchant.id)),
+          }}
+        />
+      ))}
+      {getTrails().map((trail) => (
+        <script
+          key={trail.id}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateTrailSchema(trail.id)),
           }}
         />
       ))}

@@ -15,13 +15,25 @@ npm run dev      # http://localhost:3000
 npm run build && npm start   # production
 ```
 
+## Story Trails
+The site presents three status-labelled trails from `src/lib/seo/data/trails.json`
+(validated by `TrailSchema`): Queen Victoria & Imperial Ryde (live prototype,
+played as the 1862 Mystery Trail), Wartime Solent Defence (in development),
+and Ryde Smugglers' Past (concept). Each renders as a card in
+`TrailCollection.tsx` with best-for/partner-fit lines, an indicative-route
+preview, and Explore/Sponsor CTAs. The sponsor mailto address is a single
+config value in `src/lib/config.ts` (override with NEXT_PUBLIC_SPONSOR_EMAIL).
+TouristTrip JSON-LD is generated per trail alongside the LocalBusiness blocks.
+Tracking events: map_opened, stop_selected, reward_clicked, trail_selected,
+sponsor_enquiry — the enum is defined once in types.ts and shared by the API,
+the parent bridge listener, and docs/trail-app-bridge.js.
+
 ## What's inside
 - `src/components/` — Header (responsive, spring-animated mobile menu), Hero
   (your intro clip playing subtly behind the copy: brightness/saturation
   filter + navy gradient + vignette), PhoneMockup (compass → gold laser scan
-  → 3.5s → typewriter telegram + coupon), Showcase (custom video player:
-  play/pause, seekable progress, mute, timecodes), HowItWorks (Find → Intel →
-  Yield), SMEHub (fetches `/api/merchants`, accordion reward reveals),
+  → 3.5s → typewriter telegram + coupon), Showcase (styled YouTube iframe player),
+  HowItWorks (Find → Intel → Reward), SMEHub (fetches `/api/merchants`, accordion reward reveals),
   CouncilPitch (three pillars + your signage render), Footer (compliance note).
 - `src/app/api/merchants` — GBP-aligned merchant card DTOs.
 - `src/app/api/schema/[merchantId]` — engine-generated LocalBusiness JSON-LD
