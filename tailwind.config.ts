@@ -15,7 +15,7 @@ const config: Config = {
           soft: "#C5A880",
         },
         cream: "#F4F1EA",
-        mutedwarm: "#A19E95",
+        mutedwarm: "#B5B2AA",
         tide: {
           DEFAULT: "#2E9CA6",
           deep: "#1B6E76",

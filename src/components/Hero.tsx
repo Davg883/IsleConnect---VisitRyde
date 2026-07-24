@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(11,15,25,0.85)_100%)]" />
       </div>
 
-      <div className="section-shell relative grid min-h-screen items-center gap-16 pb-24 pt-36 lg:grid-cols-2 lg:gap-10">
+      <div className="section-shell relative grid min-h-screen items-center gap-14 pb-16 pt-32 lg:grid-cols-2 lg:gap-10">
         {/* --- Left: thesis copy --- */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -72,7 +72,7 @@ export default function Hero() {
             Featured pilot experience: The 1862 Mystery Trail
           </div>
 
-          <dl className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-cream/10 pt-6">
+          <dl className="mt-10 grid max-w-xl grid-cols-3 gap-6 border-t border-cream/10 pt-6">
             {[
               { value: "No app", label: "Opens in the browser" },
               { value: "Short local stories", label: "Designed for two-minute discovery" },

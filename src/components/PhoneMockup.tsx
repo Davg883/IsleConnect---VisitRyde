@@ -128,7 +128,7 @@ export default function PhoneMockup() {
       </div>
 
       <p className="mt-5 text-center text-[0.65rem] uppercase tracking-[0.3em] text-mutedwarm">
-        Live demo — tap the screen to play
+        Live demo — tap the screen to preview the 1862 trail
       </p>
     </div>
   );

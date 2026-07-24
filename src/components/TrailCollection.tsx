@@ -32,13 +32,6 @@ const TRAIL_ICONS: Record<string, typeof Crown> = {
   smugglers: Lamp,
 };
 
-function sponsorHref(trail: Trail): string {
-  const subject = encodeURIComponent(
-    `Trail partner enquiry — ${trail.title} (IsleConnect)`
-  );
-  return `mailto:${SPONSOR_EMAIL}?subject=${subject}`;
-}
-
 function TrailCard({ trail, index }: { trail: Trail; index: number }) {
   const [routeOpen, setRouteOpen] = useState(false);
   const Icon = TRAIL_ICONS[trail.id] ?? MapPin;
@@ -50,10 +43,6 @@ function TrailCard({ trail, index }: { trail: Trail; index: number }) {
       return;
     }
     setRouteOpen((open) => !open);
-  };
-
-  const handleSponsor = () => {
-    trackEvent({ type: "sponsor_enquiry", trailId: trail.id });
   };
 
   return (
@@ -171,13 +160,13 @@ function TrailCard({ trail, index }: { trail: Trail; index: number }) {
           )}
         </AnimatePresence>
 
-        {/* CTAs */}
-        <div className="mt-6 flex flex-col gap-3">
+        {/* Visitor Primary CTA */}
+        <div className="mt-6">
           <button
             type="button"
             onClick={handlePrimary}
             aria-expanded={trail.playable ? undefined : routeOpen}
-            className="flex items-center justify-center gap-2 rounded-sm bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-950 transition-all hover:scale-[1.02] hover:shadow-glow-sm"
+            className="flex w-full items-center justify-center gap-2 rounded-sm bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-950 transition-all hover:scale-[1.02] hover:shadow-glow-sm"
           >
             {trail.playable ? (
               <>
@@ -193,13 +182,6 @@ function TrailCard({ trail, index }: { trail: Trail; index: number }) {
               </>
             )}
           </button>
-          <a
-            href={sponsorHref(trail)}
-            onClick={handleSponsor}
-            className="flex items-center justify-center gap-2 rounded-sm border border-gold px-5 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
-          >
-            <Handshake size={14} /> Sponsor this trail
-          </a>
         </div>
       </div>
     </motion.article>
@@ -211,21 +193,19 @@ export default function TrailCollection() {
     <section id="story-trails" className="relative py-28">
       <div className="section-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">Explore Ryde&apos;s Story Trails</p>
+          <p className="eyebrow">Explore Ryde</p>
           <h2 className="mt-4 font-display text-4xl text-cream sm:text-5xl">
-            Three playable heritage routes.{" "}
+            Three self-guided story routes.{" "}
             <span className="italic text-gold">
-              One visitor discovery platform.
+              One connected way to explore Ryde.
             </span>
           </h2>
-          <p className="mt-5 leading-relaxed text-mutedwarm">
-            One platform. Three story routes. Multiple audiences. Measurable
-            local footfall.
+          <p className="mt-5 text-base leading-relaxed text-gold-soft font-medium">
+            Multiple audiences. Measurable local action.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-mutedwarm">
-            Each route uses the same IsleConnect infrastructure: scan the
-            place, hear the story, unlock a local reward and track the
-            engagement.
+            Scan the place, hear the story, discover somewhere nearby and
+            measure what visitors did next.
           </p>
         </div>
 
@@ -239,9 +219,28 @@ export default function TrailCollection() {
           ))}
         </div>
 
+        {/* Consolidated Shared Partner Callout */}
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-lg border border-gold/25 bg-ink-900/60 p-8">
+          <div>
+            <h4 className="font-display text-xl text-cream">
+              Sponsor a trail route or join as a local venue partner
+            </h4>
+            <p className="mt-1 text-xs leading-relaxed text-mutedwarm">
+              Partner venues approve their story stops, details and offers before going live.
+            </p>
+          </div>
+          <a
+            href={`mailto:${SPONSOR_EMAIL}?subject=Trail%20Partner%20Enquiry%20%E2%80%94%20IsleConnect`}
+            onClick={() => trackEvent({ type: "sponsor_enquiry" })}
+            className="shrink-0 flex items-center gap-2 rounded-sm border border-gold px-6 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+          >
+            <Handshake size={14} /> Partner Enquiry
+          </a>
+        </div>
+
         <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-mutedwarm">
-          Trail statuses are shown honestly: live prototype, in development,
-          or concept. Public-facing history will be verified before launch.
+          Trail statuses are shown honestly: working digital prototype, in
+          development, or concept. Public-facing history will be verified before launch.
         </p>
       </div>
     </section>

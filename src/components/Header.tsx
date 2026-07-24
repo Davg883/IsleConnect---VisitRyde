@@ -7,11 +7,10 @@ import { Menu, X } from "lucide-react";
 import { launchTrailDemo } from "@/lib/client";
 
 const NAV_LINKS = [
-  { label: "The Trail", href: "#how-it-works" },
-  { label: "Story Trails", href: "#story-trails" },
-  { label: "History Hub", href: "#history-hub" },
-  { label: "Local Partners", href: "#local-partners" },
-  { label: "Pride in Place", href: "#pride-in-place" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Explore Ryde", href: "#story-trails" },
+  { label: "Local places", href: "#local-partners" },
+  { label: "For partners", href: "#pride-in-place" },
 ] as const;
 
 export default function Header() {
@@ -73,7 +72,7 @@ export default function Header() {
             onClick={handleLaunch}
             className="rounded-sm border border-gold px-5 py-2.5 text-sm uppercase tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-ink-950 hover:shadow-glow-sm"
           >
-            Launch Trail (Demo)
+            Preview Trail (Demo)
           </button>
         </nav>
 
@@ -116,7 +115,7 @@ export default function Header() {
                 onClick={handleLaunch}
                 className="mt-3 rounded-sm border border-gold px-5 py-3 text-sm uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
               >
-                Launch Trail (Demo)
+                Preview Trail (Demo)
               </button>
             </div>
           </motion.nav>
