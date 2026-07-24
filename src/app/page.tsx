@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Showcase from "@/components/Showcase";
 import TrailCollection from "@/components/TrailCollection";
 import HowItWorks from "@/components/HowItWorks";
+import WorkedExample from "@/components/WorkedExample";
 import SMEHub from "@/components/SMEHub";
 import CouncilPitch from "@/components/CouncilPitch";
 import Footer from "@/components/Footer";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <HowItWorks />
+        <WorkedExample />
         <TrailCollection />
         <Showcase />
         <SMEHub />

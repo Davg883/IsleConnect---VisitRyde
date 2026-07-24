@@ -2,7 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, MapPin, Ticket } from "lucide-react";
+import {
+  Calendar,
+  CheckCircle,
+  ChevronDown,
+  Compass,
+  MapPin,
+  ShieldCheck,
+  Ticket,
+  Utensils,
+} from "lucide-react";
 import type { MerchantCardDTO } from "@/lib/seo/types";
 import { trackEvent } from "@/lib/client";
 
@@ -13,6 +22,29 @@ type FetchState =
   | { status: "loading" }
   | { status: "error" }
   | { status: "ready"; merchants: MerchantCardDTO[] };
+
+const VENUE_BENEFITS = [
+  {
+    icon: MapPin,
+    title: "Directions to your door",
+    body: "Guide walking visitors straight from a story stop to your front door.",
+  },
+  {
+    icon: Utensils,
+    title: "Menu & booking views",
+    body: "Showcase food, drinks, experiences and live availability at the moment of decision.",
+  },
+  {
+    icon: Calendar,
+    title: "Seasonal offers & events",
+    body: "Feature current promotions and hosted local events as visitor traffic flows.",
+  },
+  {
+    icon: Compass,
+    title: "Simple evidence summaries",
+    body: "Clear, privacy-first reporting on what visitors did next across each route.",
+  },
+] as const;
 
 export default function SMEHub() {
   const [state, setState] = useState<FetchState>({ status: "loading" });
@@ -48,10 +80,10 @@ export default function SMEHub() {
     };
   }, []);
 
-  const toggleReward = (merchantId: string) => {
+  const toggleOffer = (merchantId: string) => {
     setOpenId((current) => {
       const next = current === merchantId ? null : merchantId;
-      if (next) trackEvent({ type: "reward_clicked", merchantId });
+      if (next) trackEvent({ type: "offer_opened", merchantId });
       return next;
     });
   };
@@ -60,19 +92,63 @@ export default function SMEHub() {
     <section id="local-partners" className="relative py-28">
       <div className="section-shell">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">Local Partners</p>
+          <p className="eyebrow">Local Venue Network</p>
           <h2 className="mt-4 font-display text-4xl text-cream sm:text-5xl">
-            The Independent Business{" "}
-            <span className="italic text-gold">Cooperative</span>
+            Be discovered at the moment a visitor is{" "}
+            <span className="italic text-gold">deciding what to do next.</span>
           </h2>
           <p className="mt-5 leading-relaxed text-mutedwarm">
-            Every reward on the trail is honoured by a Ryde independent. Card
-            details below are drawn live from each partner&apos;s verified
-            business profile — categories, services and landmark distances
-            included.
+            IsleConnect helps independent venues connect with passing trail
+            traffic. Below are sample partner listings showing how verified
+            local details, landmark distances and seasonal offers appear.
           </p>
         </div>
 
+        {/* --- Venue Benefit Cards --- */}
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {VENUE_BENEFITS.map((benefit) => (
+            <div
+              key={benefit.title}
+              className="rounded-lg border border-gold/20 bg-ink-900/40 p-6"
+            >
+              <benefit.icon size={22} className="text-gold" />
+              <h3 className="mt-4 font-display text-lg text-cream">
+                {benefit.title}
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-mutedwarm">
+                {benefit.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* --- Venue Trust Guarantee Banner --- */}
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 rounded-lg border border-gold/30 bg-gradient-to-r from-gold/10 via-ink-900/60 to-ink-950 p-7">
+          <div className="flex items-start gap-4">
+            <ShieldCheck size={28} className="mt-1 shrink-0 text-gold" />
+            <div>
+              <h4 className="font-display text-lg text-cream">
+                The Venue Control Guarantee
+              </h4>
+              <p className="mt-1 text-xs leading-relaxed text-mutedwarm">
+                <strong className="text-gold-soft font-semibold">
+                  You approve your story, details and offers before anything goes live.
+                </strong>{" "}
+                Once approved, the same venue foundation can support new seasonal
+                stories and campaigns without starting again each time.
+              </p>
+            </div>
+          </div>
+          <a
+            href="mailto:david@isleconnect.co.uk?subject=Venue%20Partner%20Enquiry%20%E2%80%94%20IsleConnect"
+            onClick={() => trackEvent({ type: "sponsor_enquiry" })}
+            className="shrink-0 rounded-sm border border-gold px-5 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+          >
+            Partner Enquiry
+          </a>
+        </div>
+
+        {/* --- Partner Cards --- */}
         <div className="mt-16">
           {state.status === "loading" && (
             <div className="grid gap-8 md:grid-cols-3" aria-hidden>
@@ -130,11 +206,11 @@ export default function SMEHub() {
 
                     <button
                       type="button"
-                      onClick={() => toggleReward(merchant.id)}
+                      onClick={() => toggleOffer(merchant.id)}
                       aria-expanded={open}
                       className="mt-6 flex items-center justify-between rounded-sm border border-gold px-4 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
                     >
-                      Reveal reward details
+                      View partner offer & menu
                       <ChevronDown
                         size={16}
                         className={`transition-transform duration-300 ${
@@ -158,14 +234,14 @@ export default function SMEHub() {
                         >
                           <div className="mt-4 rounded-lg border border-dashed border-gold/50 bg-gold/10 p-4 text-center">
                             <p className="flex items-center justify-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold-soft">
-                              <Ticket size={14} /> Trail coupon
+                              <Ticket size={14} /> Partner offer code
                             </p>
                             <p className="mt-2 font-mono text-lg font-semibold tracking-[0.2em] text-gold">
                               {merchant.couponCode}
                             </p>
                             <p className="mt-2 text-[0.65rem] text-mutedwarm">
-                              Show at the counter after decoding the partner
-                              stop. One redemption per player, per trail run.
+                              Present at counter or mention when booking. Verified
+                              by venue partner.
                             </p>
                           </div>
                         </motion.div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Mail, MapPin } from "lucide-react";
-import { SPONSOR_EMAIL } from "@/lib/config";
+import { Mail, MapPin, ShieldCheck } from "lucide-react";
+import { PILOT_STATUS, SPONSOR_EMAIL } from "@/lib/config";
 
 export default function Footer() {
   return (
@@ -20,9 +20,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-mutedwarm">
-            The Coastal Creative Gateway — an interactive heritage and
-            local-economy platform for Ryde, Isle of Wight. Built with, and
-            for, the town&apos;s independent businesses.
+            IsleConnect is a friendly, no-app guide connecting local stories,
+            places and useful next steps across the Isle of Wight.
           </p>
         </div>
 
@@ -48,23 +47,24 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-xs uppercase tracking-[0.3em] text-gold-soft">
-            Programme note
+          <h3 className="text-xs uppercase tracking-[0.3em] text-gold-soft flex items-center gap-1.5">
+            <ShieldCheck size={14} className="text-tide" /> How IsleConnect stays trusted
           </h3>
           <p className="mt-4 text-xs leading-relaxed text-mutedwarm">
-            This pilot is presented to Ryde Town Council and the Ryde
-            Neighbourhood Board in support of an application under the Pride in
-            Place programme. Figures shown are programme targets for the pilot
-            period unless stated otherwise; interaction data is collected
-            anonymously and reported to the Board. IsleConnect is an
-            independent initiative and this page does not represent the views
-            of Ryde Town Council.
+            Verified &amp; current place details · Permission-aware venue information ·
+            Reusable content foundation maintained via the Vectis ONE media pipeline.
+          </p>
+          <p className="mt-3 text-[0.65rem] text-gold-soft/80">
+            {PILOT_STATUS}.
           </p>
         </div>
       </div>
-      <div className="section-shell mt-12 border-t border-cream/10 pt-6">
+      <div className="section-shell mt-12 border-t border-cream/10 pt-6 flex flex-col md:flex-row justify-between gap-4">
         <p className="text-xs text-mutedwarm">
           © {new Date().getFullYear()} IsleConnect. Crafted on the Island.
+        </p>
+        <p className="text-xs text-mutedwarm">
+          No app download required. Open in any mobile browser.
         </p>
       </div>
     </footer>

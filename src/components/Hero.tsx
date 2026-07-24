@@ -34,21 +34,21 @@ export default function Hero() {
         >
           <p className="eyebrow flex items-center gap-2">
             <Sparkles size={14} className="text-tide" />
-            The 1862 Mystery Trail · Ryde, Isle of Wight
+            ISLECONNECT · NO APP REQUIRED
           </p>
 
           <h1 className="mt-6 font-display text-5xl leading-[1.08] text-cream sm:text-6xl lg:text-[4.2rem]">
-            Unlock Ryde&apos;s
+            One scan opens a more
             <br />
-            <span className="italic text-gold">hidden story</span>
+            <span className="italic text-gold">welcoming, surprising</span>
             <br />
-            trails.
+            and connected Island.
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-mutedwarm">
-            Scan real places, follow cinematic local stories, claim rewards
-            from independent venues and help turn Ryde&apos;s heritage into
-            measurable footfall.
+            Discover a short local story, find somewhere nearby and take a
+            useful next step. No app needed — just open it on the phone already
+            in your pocket.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
@@ -57,38 +57,31 @@ export default function Hero() {
               onClick={launchTrailDemo}
               className="rounded-sm bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink-950 shadow-glow transition-all hover:scale-[1.03] hover:shadow-glow"
             >
-              Experience the 1862 Mystery Trail
+              Preview the Ryde trail
             </button>
             <a
-              href="#story-trails"
-              className="rounded-sm border border-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-ink-950"
+              href="#how-it-works"
+              className="rounded-sm border border-gold/40 px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:bg-gold hover:text-ink-950"
             >
-              Become a Trail Partner
-            </a>
-            <a
-              href="#history-hub"
-              className="text-sm uppercase tracking-[0.2em] text-cream/70 underline decoration-gold/50 underline-offset-8 transition-colors hover:text-gold"
-            >
-              Watch the film
+              See how it works
             </a>
           </div>
 
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-cream/60">
-            Begin with the 1862 Mystery Trail — the playable Queen Victoria
-            chapter — then explore smugglers&apos; cellars and wartime coastal
-            defences as the platform grows.
-          </p>
+          <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-xs uppercase tracking-wider text-gold">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
+            Featured pilot experience: The 1862 Mystery Trail
+          </div>
 
-          <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-cream/10 pt-6">
+          <dl className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-cream/10 pt-6">
             {[
-              { value: "3", label: "Story trails" },
-              { value: "1862", label: "Victoria's secret dispatches" },
-              { value: "100%", label: "Independent partners" },
+              { value: "No app", label: "Opens in the browser" },
+              { value: "Short local stories", label: "Designed for two-minute discovery" },
+              { value: "Venue-approved information", label: "Partners control what visitors see" },
             ].map((stat) => (
-              <div key={stat.label}>
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-display text-2xl text-gold">{stat.value}</dd>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-mutedwarm">
+              <div key={stat.value}>
+                <dt className="sr-only">{stat.value}</dt>
+                <dd className="font-display text-lg text-gold">{stat.value}</dd>
+                <dd className="mt-1 text-xs leading-normal text-mutedwarm">
                   {stat.label}
                 </dd>
               </div>

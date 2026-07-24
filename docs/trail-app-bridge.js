@@ -6,11 +6,13 @@
  * a tracked action. The parent landing page validates origin + payload shape
  * and forwards the event to its Zod-checked /api/events endpoint.
  *
- * Allowed event names (anything else is rejected by the parent):
- *   "map_opened" | "stop_selected" | "reward_clicked" |
- *   "trail_selected" | "sponsor_enquiry"
+ * Allowed visitor journey & intent event names:
+ *   "page_opened" | "map_opened" | "stop_selected" |
+ *   "story_started" | "story_completed" | "nearby_places_viewed" |
+ *   "worked_example_viewed" | "offer_opened" | "directions_clicked" |
+ *   "menu_clicked" | "booking_clicked" | "trail_selected" | "sponsor_enquiry"
  *
- * Metadata values must be strings, numbers, or booleans. Two keys get
+ * Metadata values must be strings, numbers, or booleans. Three keys get
  * special treatment on the parent side and are lifted into first-class
  * fields: `merchantId`, `stopId` and `trailId`.
  * ---------------------------------------------------------------------------
@@ -31,7 +33,7 @@ const ISLECONNECT_PARENT_ORIGINS = [
  * Safely dispatch a trail event to the IsleConnect parent page.
  * No-ops when the app is opened directly (not inside an iframe).
  *
- * @param {"map_opened"|"stop_selected"|"reward_clicked"|"trail_selected"|"sponsor_enquiry"} eventName
+ * @param {string} eventName
  * @param {Record<string, string|number|boolean>} [eventMetadata]
  */
 function dispatchIsleConnectEvent(eventName, eventMetadata = {}) {
@@ -58,18 +60,18 @@ function dispatchIsleConnectEvent(eventName, eventMetadata = {}) {
 /* ---------------------------------------------------------------------------
  * Example wiring inside the trail app:
  *
- *   // When the map view opens:
- *   dispatchIsleConnectEvent("map_opened");
+ *   // When a player selects a stop & starts a story:
+ *   dispatchIsleConnectEvent("story_started", { stopId: "dover-street-node" });
  *
- *   // When a player selects a stop:
- *   dispatchIsleConnectEvent("stop_selected", { stopId: "dover-street-node" });
+ *   // When the story audio/video completes:
+ *   dispatchIsleConnectEvent("story_completed", { stopId: "dover-street-node" });
  *
- *   // When the Cibo voucher is revealed:
- *   revealButton.addEventListener("click", () => {
- *     dispatchIsleConnectEvent("reward_clicked", {
- *       merchantId: "cibo",
- *       voucher_code: "CIBO_SUMMER_10",
- *       venue: "Cibo",
- *     });
+ *   // When nearby places are shown:
+ *   dispatchIsleConnectEvent("nearby_places_viewed", { stopId: "dover-street-node" });
+ *
+ *   // When an offer is opened:
+ *   dispatchIsleConnectEvent("offer_opened", {
+ *     merchantId: "cibo",
+ *     venue: "Cibo",
  *   });
  * ------------------------------------------------------------------------- */

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Landmark, TrainFront, Users } from "lucide-react";
+import { PILOT_STATUS } from "@/lib/config";
 
 const PILLARS = [
   {
@@ -16,8 +17,8 @@ const PILLARS = [
     icon: Landmark,
     number: "Pillar 2",
     title: "Preserving Civic Heritage",
-    metric: "Heritage storytelling as an economic multiplier",
-    body: "Each stop attaches a revenue mechanism to a heritage asset — the Colonnade, St Thomas's, Appley Tower — building the commercial case for restoration. The story layer is generated and maintained at a fraction of traditional interpretation-board cost.",
+    metric: "One approved local story, reused across seasons",
+    body: "Approved local stories can be updated and reused across digital routes, seasonal campaigns and partner materials without starting again each time — creating lasting economic value around civic assets.",
   },
   {
     icon: Users,
@@ -47,13 +48,17 @@ export default function CouncilPitch() {
               </span>
             </h2>
           </div>
-          <p className="leading-relaxed text-mutedwarm">
-            This page is the live pilot, not a slide deck. Every mechanism the
-            programme proposes — the trail, the partner cooperative, the
-            measurement layer — is running above, in the browser, today. The
-            three pillars below map the pilot directly onto Pride in Place
-            objectives.
-          </p>
+          <div>
+            <p className="leading-relaxed text-mutedwarm">
+              Every mechanism the programme proposes — the trail, the partner
+              network, the measurement layer — is demonstrated live in the
+              browser today. The three pillars map the pilot directly onto
+              Pride in Place objectives.
+            </p>
+            <div className="mt-4 inline-block rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-xs uppercase tracking-wider text-gold">
+              {PILOT_STATUS}
+            </div>
+          </div>
         </div>
 
         <div className="signal-divider mt-14" aria-hidden>
@@ -112,13 +117,13 @@ export default function CouncilPitch() {
             <p className="mt-4 leading-relaxed text-mutedwarm">
               Physical deployment is a two-part kit: a wall or counter node
               carrying the stop&apos;s story seal, and a partner card marking
-              the venue as a Route Reward Partner. Both are produced to the
+              the venue as an approved Route Partner. Both are produced to the
               brand system shown across this page, so the trail reads as one
               coherent civic asset from the Esplanade to the till.
             </p>
             <p className="mt-4 text-xs uppercase tracking-[0.25em] text-mutedwarm">
-              Measurement: map_opened · stop_selected · reward_clicked — logged
-              anonymously, reported quarterly to the Board
+              Measurement: map_opened · stop_selected · offer_opened — logged
+              anonymously, reported to partners
             </p>
           </div>
         </div>

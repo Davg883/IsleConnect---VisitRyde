@@ -70,9 +70,17 @@ export const MerchantDatasetSchema = z.array(MerchantSchema).min(1);
 /** Lightweight analytics event contract for /api/events. */
 export const TrackingEventSchema = z.object({
   type: z.enum([
+    "page_opened",
     "map_opened",
     "stop_selected",
-    "reward_clicked",
+    "story_started",
+    "story_completed",
+    "nearby_places_viewed",
+    "worked_example_viewed",
+    "offer_opened",
+    "directions_clicked",
+    "menu_clicked",
+    "booking_clicked",
     "trail_selected",
     "sponsor_enquiry",
   ]),
@@ -136,9 +144,17 @@ export const BridgeMessageSchema = z.object({
   type: z.literal("ISLECONNECT_IFRAME_EVENT"),
   payload: z.object({
     event: z.enum([
+      "page_opened",
       "map_opened",
       "stop_selected",
-      "reward_clicked",
+      "story_started",
+      "story_completed",
+      "nearby_places_viewed",
+      "worked_example_viewed",
+      "offer_opened",
+      "directions_clicked",
+      "menu_clicked",
+      "booking_clicked",
       "trail_selected",
       "sponsor_enquiry",
     ]),
